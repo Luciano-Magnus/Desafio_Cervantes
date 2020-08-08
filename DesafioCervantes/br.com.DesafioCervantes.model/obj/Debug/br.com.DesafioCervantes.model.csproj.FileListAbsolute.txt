@@ -1,0 +1,6 @@
+C:\Users\Luciano Magnus\source\repos\DesafioCervantes\br.com.DesafioCervantes.model\bin\Debug\br.com.DesafioCervantes.model.dll
+C:\Users\Luciano Magnus\source\repos\DesafioCervantes\br.com.DesafioCervantes.model\bin\Debug\br.com.DesafioCervantes.model.pdb
+C:\Users\Luciano Magnus\source\repos\DesafioCervantes\br.com.DesafioCervantes.model\obj\Debug\br.com.DesafioCervantes.model.csprojAssemblyReference.cache
+C:\Users\Luciano Magnus\source\repos\DesafioCervantes\br.com.DesafioCervantes.model\obj\Debug\br.com.DesafioCervantes.model.csproj.CoreCompileInputs.cache
+C:\Users\Luciano Magnus\source\repos\DesafioCervantes\br.com.DesafioCervantes.model\obj\Debug\br.com.DesafioCervantes.model.dll
+C:\Users\Luciano Magnus\source\repos\DesafioCervantes\br.com.DesafioCervantes.model\obj\Debug\br.com.DesafioCervantes.model.pdb
