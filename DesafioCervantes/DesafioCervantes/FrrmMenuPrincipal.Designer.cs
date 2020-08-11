@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -36,6 +36,8 @@
             this.btnIncluir = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNumero = new System.Windows.Forms.TextBox();
@@ -43,6 +45,7 @@
             this.grdCadastro = new System.Windows.Forms.DataGridView();
             this.campoTexto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.campoNumero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCadastro)).BeginInit();
@@ -79,6 +82,7 @@
             this.btnExcluir.TabIndex = 3;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnAlterar
             // 
@@ -88,6 +92,7 @@
             this.btnAlterar.TabIndex = 2;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnIncluir
             // 
@@ -97,6 +102,7 @@
             this.btnIncluir.TabIndex = 1;
             this.btnIncluir.Text = "Incluir";
             this.btnIncluir.UseVisualStyleBackColor = true;
+            this.btnIncluir.Click += new System.EventHandler(this.btnIncluir_Click);
             // 
             // btnNovo
             // 
@@ -110,6 +116,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.txtId);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.txtNumero);
@@ -119,10 +127,27 @@
             this.panel2.Size = new System.Drawing.Size(625, 80);
             this.panel2.TabIndex = 2;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(518, 25);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(18, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "ID";
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(521, 44);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(61, 20);
+            this.txtId.TabIndex = 5;
+            this.txtId.Validating += new System.ComponentModel.CancelEventHandler(this.txtId_Validating);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(508, 25);
+            this.label2.Location = new System.Drawing.Point(412, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 4;
@@ -139,7 +164,7 @@
             // 
             // txtNumero
             // 
-            this.txtNumero.Location = new System.Drawing.Point(511, 44);
+            this.txtNumero.Location = new System.Drawing.Point(415, 44);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(100, 20);
             this.txtNumero.TabIndex = 2;
@@ -148,23 +173,26 @@
             // 
             this.txtDescricao.Location = new System.Drawing.Point(33, 44);
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(455, 20);
+            this.txtDescricao.Size = new System.Drawing.Size(376, 20);
             this.txtDescricao.TabIndex = 1;
             // 
             // grdCadastro
             // 
             this.grdCadastro.AllowUserToAddRows = false;
             this.grdCadastro.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.grdCadastro.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.grdCadastro.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.grdCadastro.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdCadastro.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.campoTexto,
-            this.campoNumero});
-            this.grdCadastro.Location = new System.Drawing.Point(21, 193);
+            this.campoNumero,
+            this.idCadastro});
+            this.grdCadastro.Location = new System.Drawing.Point(12, 193);
             this.grdCadastro.Name = "grdCadastro";
-            this.grdCadastro.Size = new System.Drawing.Size(616, 245);
+            this.grdCadastro.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdCadastro.Size = new System.Drawing.Size(625, 245);
             this.grdCadastro.TabIndex = 4;
+            this.grdCadastro.DoubleClick += new System.EventHandler(this.grdCadastro_DoubleClick);
             // 
             // campoTexto
             // 
@@ -178,6 +206,12 @@
             this.campoNumero.HeaderText = "Número";
             this.campoNumero.Name = "campoNumero";
             this.campoNumero.ReadOnly = true;
+            // 
+            // idCadastro
+            // 
+            this.idCadastro.HeaderText = "ID";
+            this.idCadastro.Name = "idCadastro";
+            this.idCadastro.ReadOnly = true;
             // 
             // frmMenuPrincipal
             // 
@@ -217,6 +251,9 @@
         private System.Windows.Forms.DataGridView grdCadastro;
         private System.Windows.Forms.DataGridViewTextBoxColumn campoTexto;
         private System.Windows.Forms.DataGridViewTextBoxColumn campoNumero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idCadastro;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtId;
     }
 }
 

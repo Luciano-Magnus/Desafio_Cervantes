@@ -16,7 +16,8 @@ namespace br.com.DesafioCervantes.dao
 
         NpgsqlConnection conexaoBd;
 
-        String conexaoPostgre = @"server=127.0.0.1;Port=5432;User id=postgres;Password=postbda;Database=DesafioCervantesDB";
+        String conexaoPostgre = @"server=127.0.0.1;Port=5432;User id=postgres;Password=postdba;Database=DesafioCervantesDB";
+        
         
         public void insert(Cadastro oCadastro) {
             try
@@ -25,8 +26,11 @@ namespace br.com.DesafioCervantes.dao
                 NpgsqlCommand sql = new NpgsqlCommand("insert into cadastro (campo_texto,campo_numero) values (@texto, @numero)", conexaoBd);
                 sql.Parameters.AddWithValue("@texto", oCadastro.campoTexto);
                 sql.Parameters.AddWithValue("@numero", oCadastro.campoNumero);
+                
                 conexaoBd.Open();
                 sql.ExecuteNonQuery();
+            
+                insertLog();
             }
             catch (Exception oErro)
             {
@@ -40,15 +44,53 @@ namespace br.com.DesafioCervantes.dao
         
         
         }
+        public void insertLog()
+        {
+            try
+            {
+                conexaoBd = new NpgsqlConnection(conexaoPostgre);
+                NpgsqlCommand sql = new NpgsqlCommand("insert into logCadastro (operacao) values ('isert' )", conexaoBd);
+                conexaoBd.Open();
+                sql.ExecuteNonQuery();
+            }catch (Exception erro)
+            {
+                throw erro;
+            }
+            finally
+            {
+                conexaoBd.Close();
+            }
+        }
         public void alter(Cadastro oCadastro) {
 
             try
             {
                 conexaoBd = new NpgsqlConnection(conexaoPostgre);
-                NpgsqlCommand sql = new NpgsqlCommand("update cadastro set campo_texto=@texto,campo_numero=@numero where id_cadastro=@id", conexaoBd);
+                NpgsqlCommand sql = new NpgsqlCommand("update cadastro set campo_texto=@texto,campo_numero=@numero where id_cadastro= @id", conexaoBd);
                 sql.Parameters.AddWithValue("@texto", oCadastro.campoTexto);
                 sql.Parameters.AddWithValue("@numero", oCadastro.campoNumero);
                 sql.Parameters.AddWithValue("@id", oCadastro.idCadastro);
+                conexaoBd.Open();
+                sql.ExecuteNonQuery();
+                alterLog();
+            }
+            catch (Exception oErro)
+            {
+
+                throw oErro;
+            }
+            finally
+            {
+                conexaoBd.Close();
+            }
+        }
+
+        public void alterLog()
+        {
+            try
+            {
+                conexaoBd = new NpgsqlConnection(conexaoPostgre);
+                NpgsqlCommand sql = new NpgsqlCommand("insert into logCadastro (operacao) values ('update' )", conexaoBd);
                 conexaoBd.Open();
                 sql.ExecuteNonQuery();
             }
@@ -67,8 +109,29 @@ namespace br.com.DesafioCervantes.dao
             try
             {
                 conexaoBd = new NpgsqlConnection(conexaoPostgre);
-                NpgsqlCommand sql = new NpgsqlCommand("delete from cadastro where idCadastro=@id", conexaoBd);
+                NpgsqlCommand sql = new NpgsqlCommand("delete from cadastro where id_cadastro=@id", conexaoBd);
                 sql.Parameters.AddWithValue("@id", oCadastro.idCadastro);
+                conexaoBd.Open();
+                sql.ExecuteNonQuery();
+                deleteLog();
+            }
+            catch (Exception oErro)
+            {
+
+                throw oErro;
+            }
+            finally
+            {
+                conexaoBd.Close();
+            }
+        }
+
+        public void deleteLog()
+        {
+            try
+            {
+                conexaoBd = new NpgsqlConnection(conexaoPostgre);
+                NpgsqlCommand sql = new NpgsqlCommand("insert into logCadastro (operacao) values ('delete' )", conexaoBd);
                 conexaoBd.Open();
                 sql.ExecuteNonQuery();
             }
@@ -82,6 +145,7 @@ namespace br.com.DesafioCervantes.dao
                 conexaoBd.Close();
             }
         }
+
 
         public Cadastro carregar(int idCadastro) {
             try
@@ -103,7 +167,6 @@ namespace br.com.DesafioCervantes.dao
                 return oCadastro;
 
 
-                sql.ExecuteNonQuery();
             }
             catch (Exception oErro)
             {
@@ -150,9 +213,9 @@ namespace br.com.DesafioCervantes.dao
             {
                 var temObjeto = new Cadastro()
                 {
-                    idCadastro = Convert.ToInt32(retorna["id_estado"]),
+                    idCadastro = Convert.ToInt32(retorna["id_cadastro"]),
                     campoTexto = retorna["campo_texto"].ToString(),
-                    campoNumero = Convert.ToDouble(retorna["id_estado"]),
+                    campoNumero = Convert.ToDouble(retorna["campo_numero"]),
                 };
                 listaCadastro.Add(temObjeto);
             }
