@@ -44,7 +44,7 @@ CREATE DATABASE "DesafioCervantesDB"
 				raise exception 'Os numeros nao podem se repetir.';
 			end if;
 			if numero <= 0 then
-				raise exception 'Numero deve ser maior que 0';
+				raise exception 'Numero deve ser maior que 0.';
 			end if;
 		end if;
 	return new;
@@ -53,4 +53,3 @@ CREATE DATABASE "DesafioCervantesDB"
 
     create trigger validaNumero before insert or update on cadastro
     for each row execute procedure validaNumero();
-
