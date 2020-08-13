@@ -11,8 +11,7 @@
 
     C#
     Visual studio
-    SQL 
-    pgAdmin 4 
+    SQL  
 
 ---
 
@@ -21,14 +20,13 @@
 ```bash
 # clonar repositório
 $ git clone https://github.com/Luciano-Magnus/Desafio_Cervantes.git
-
-# entrar no diretório
-$ cd DesafioCervantes
-
-# instalar as dependências
-$ yarn install
-
-# iniciar projeto
-$yarn start
 ```
+---
+### 🧨 Como executar
+    #interface
+    Abra o diretório DesafioCervantes no Visual Studio.
+    
+    #banco de dados
+    Crie o banco de dados com o arquivo DesafioCervantesBD.SQL
+
 Desenvolvido por Luciano Magnus
